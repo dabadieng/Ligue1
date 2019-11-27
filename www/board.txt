@@ -1,0 +1,38 @@
+if(exp1,valeursivrai,valeursifaux)
+
+if((sign(re_but1-re_but2)=1 ) {
+    pt1 = 3
+}else if ((re_but1-re_but2)=-1) {
+    pt1 = 0
+}else {
+    pt1 = 1
+}
+
+
+create view calculpoint as
+select 
+    if(sign(re_but1-re_but2)=1,3,if(sign(re_but1-re_but2)=-1,0,1)) pt1, 
+    if(sign(re_but1-re_but2)=1,0,if(sign(re_but1-re_but2)=-1,3,1)) pt2, 
+    re_equipe1, re_equipe2 
+from rencontre
+
+
+//union des match aller et retour
+create view allerretour as
+(select
+    re_equipe1 equipe, sum(pt1) point
+from calculpoint 
+group by re_equipe1)
+union
+(select
+    re_equipe2 equipe, sum(pt2) point
+from calculpoint 
+group by re_equipe2)
+
+//calcul nombre de point total
+select eq_nom, equipe, sum(point) total
+from allerretour, equipe
+where eq_id=equipe
+group by equipe 
+order by total desc
+

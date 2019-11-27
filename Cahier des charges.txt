@@ -1,0 +1,17 @@
+﻿La Ligue de football professionnel souhaite avoir une application permettant :
+1. de planifier les rencontres du championnat de France de football, 
+2. d'enregistrer les résultats de chaque rencontre,
+3. de calculer le classement des équipes.
+
+Voici le cahier des charges :
+- le championnat compte 20 équipes.
+- chaque équipe rencontre 2 fois les autres équipes, une fois chez elle, une fois à l'extérieur.
+- chaque rencontre est caractérisée par :
+   - l'équipe qui joue à domicile
+   - l'équipe qui joue à l'extérieur
+   - la date et l'heure du match
+   - le nombre de buts marqués par chaque équipe
+   - le nombre de points attribués à chaque équipe (3 points au gagnant, 0 au perdant, 1 point chacun si égalité)
+- On souhaite mémoriser pour chaque but marqué, le joueur qui a marqué et à quelle heure.
+	
+Créer la base de données qui répond au mieux aux besoins exprimés.
